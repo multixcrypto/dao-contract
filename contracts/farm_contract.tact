@@ -26,7 +26,7 @@ import "./utils/farm_messages.tact";
 import "./utils/farm_structs.tact";
 import "./utils/funcs.tact";
 
-const contractVersion: Int = 5108;
+const contractVersion: Int = 5109;
 const contractPlatform: String = "© Multix";
 const selfTestKey: Int = 0x33333983a3419e8ffb9ac65d6fe99bec81cf4d14b17eb23e16ec184284b83887;
 

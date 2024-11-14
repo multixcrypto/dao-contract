@@ -65,13 +65,13 @@ fun calculateUnlockedAmount(totalAmount: Int, unlockOptions: UnlockOptions, curr
         return 0;
     }
 
-    // Amount unlocked at TGE
-    let unlockedAmount: Int = (totalAmount * unlockOptions.unlockPercent) / 100;
-
     // Unlock TGE only
     if (unlockOptions.unlockPercent >= 100) {
-        return unlockedAmount;
+        return totalAmount;
     }
+
+    // Amount unlocked at TGE
+    let unlockedAmount: Int = (totalAmount * unlockOptions.unlockPercent) / 100;
 
     // Time elapsed since unlockStartTime, in seconds
     let timeElapsed: Int = currentTime - unlockOptions.unlockStartTime;
@@ -185,7 +185,7 @@ fun checkUnlockOptions(unlockOptions: UnlockOptions): Int {
         }
 
         //Additional self-diagnostics are performed
-        if (calculateUnlockedAmount(12345, unlockOptions, now() + 86400 * 365 * 3) == 12345) {
+        if (calculateUnlockedAmount(12345, unlockOptions, now() + 86400 * 365 * 3) != 12345) {
             return -3020;
         }
         if (calculateUnlockedAmount(nanoTons, unlockOptions, now() + 86400 * 365 * 100) != nanoTons) {
